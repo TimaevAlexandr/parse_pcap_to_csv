@@ -3,11 +3,12 @@ project(PacketClassifier)
 
 set(CMAKE_CXX_STANDARD 11)
 
-# Находим библиотеку pcap
-find_library(PCAP_LIBRARY NAMES pcap)
+# Находим библиотеки pcap
+find_library(PCAP_LIBRARY_STATIC NAMES pcap PATHS ${CMAKE_CURRENT_SOURCE_DIR})
+find_library(PCAP_LIBRARY_SHARED NAMES pcap PATHS ${CMAKE_CURRENT_SOURCE_DIR})
 
-# Проверяем, найдена ли библиотека pcap
-if(NOT PCAP_LIBRARY)
+# Проверяем, найдены ли библиотеки pcap
+if(NOT PCAP_LIBRARY_STATIC OR NOT PCAP_LIBRARY_SHARED)
     message(FATAL_ERROR "libpcap not found.")
 endif()
 
@@ -19,5 +20,9 @@ set(SOURCE_FILES
 # Создаем исполняемый файл
 add_executable(packet_classifier ${SOURCE_FILES})
 
-# Линкуем с библиотекой pcap
-target_link_libraries(packet_classifier PRIVATE ${PCAP_LIBRARY})
+# Линкуем с статической библиотекой pcap
+target_link_libraries(packet_classifier PRIVATE ${PCAP_LIBRARY_STATIC})
+
+# Линкуем с динамической библиотекой pcap
+# Если вы хотите использовать динамическую библиотеку, раскомментируйте следующую строку
+# target_link_libraries(packet_classifier PRIVATE ${PCAP_LIBRARY_SHARED})

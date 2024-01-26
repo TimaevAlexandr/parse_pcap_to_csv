@@ -1,0 +1,3 @@
+/mnt/d/Coding/stazhirovka/python/parse_pcap_to_csv/programm1/build/CMakeFiles/packet_classifier.dir
+/mnt/d/Coding/stazhirovka/python/parse_pcap_to_csv/programm1/build/CMakeFiles/edit_cache.dir
+/mnt/d/Coding/stazhirovka/python/parse_pcap_to_csv/programm1/build/CMakeFiles/rebuild_cache.dir

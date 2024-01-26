@@ -4,7 +4,7 @@ project(PacketClassifier)
 set(CMAKE_CXX_STANDARD 11)
 
 # Устанавливаем путь к библиотеке pcap
-set(PCAP_LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/libpcap/libpcap.so.1.11.0-PRE-GIT")
+set(PCAP_LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/libcap/libpcap.a")
 
 # Проверяем, найдена ли библиотека pcap
 if(NOT EXISTS ${PCAP_LIBRARY_PATH})

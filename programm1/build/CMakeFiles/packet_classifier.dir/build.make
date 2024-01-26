@@ -92,7 +92,7 @@ packet_classifier_EXTERNAL_OBJECTS =
 
 packet_classifier: CMakeFiles/packet_classifier.dir/main.cpp.o
 packet_classifier: CMakeFiles/packet_classifier.dir/build.make
-packet_classifier: /usr/lib/x86_64-linux-gnu/libpcap.so
+packet_classifier: ../libpcap/libpcap.so.1.11.0-PRE-GIT
 packet_classifier: CMakeFiles/packet_classifier.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/d/Coding/stazhirovka/python/parse_pcap_to_csv/programm1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable packet_classifier"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/packet_classifier.dir/link.txt --verbose=$(VERBOSE)

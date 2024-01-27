@@ -1,13 +1,16 @@
 CXX=g++
-CXXFLAGS=-Wall
+CXXFLAGS=-w
 LDFLAGS=-ldl
 SOURCES=main.cpp
 EXECUTABLE=programm
-MESSAGE="Now you can run the programm with 'make run pcap_file=example.pcap ' "
+MESSAGE="\n Now you can run the programm with 'make run pcap_file=example.pcap ' "
+LIBRARY_PATH=libs/libpcap.so.1.11.0-PRE-GIT
 
 build:
-	g++ main.cpp -ldl -o prog libs/libpcap.so.1.11.0-PRE-GIT
+	g++ $(SOURCES) $(CXXFLAGS) $(LDFLAGS) -o $(EXECUTABLE) $(LIBRARY_PATH)
 	@echo $(MESSAGE)
 run:
-	chmod +x $(EXECUTABLE)
+	export LD_LIBRARY_PATH=./libs
 	./$(EXECUTABLE) $(pcap_file)
+clean:
+	rm $(EXECUTABLE)

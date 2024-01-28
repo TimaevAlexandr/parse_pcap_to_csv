@@ -28,7 +28,7 @@ void FlowAnalyzer::handlePacket(const struct pcap_pkthdr* pkthdr, const unsigned
 }
 
 void FlowAnalyzer::saveResultsToFile(const std::string& filePath) {
-    std::ofstream output_file(filePath);
+    std::ofstream output_file(filePath, std::ofstream::trunc); // очиащем файл перед записью
 
     if (!output_file.is_open()) {
         std::cerr << "Error opening output file." << std::endl;
@@ -75,5 +75,5 @@ void FlowAnalyzer::analyzePcapFile(const std::string& pcapFilePath) {
 
         saveResultsToFile("../output.csv");
 
-        std::cout << "Classification completed. Results saved in 'output.csv'." << std::endl;
+        std::cout << "\nClassification completed. Results saved in 'output.csv'." << std::endl;
     }

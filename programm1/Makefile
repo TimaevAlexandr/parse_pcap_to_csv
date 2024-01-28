@@ -1,12 +1,15 @@
 CXX=g++
 CXXFLAGS=-w
 LDFLAGS=-ldl
-SOURCES=src/main.cpp src/Flow.cpp
+SOURCES=$(wildcard src/*.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=programm
-MESSAGE="\nNow you can run the programm with 'make run pcap_file=example.pcap '"
-LIBRARY=libpcap.so.1
+
 export LD_LIBRARY_PATH=./libs
+LIBRARY=libpcap.so.1
+
+MESSAGE="\nNow you can run the programm with 'make run pcap_file=example.pcap'"
+
 
 build: $(EXECUTABLE)
 

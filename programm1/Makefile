@@ -8,7 +8,7 @@ LIBRARY=libpcap.so.1.11.0-PRE-GIT
 export LD_LIBRARY_PATH=./libs
 
 build:
-	g++ $(SOURCES) $(CXXFLAGS) $(LDFLAGS) -o $(EXECUTABLE) $(LIBRARY)
+	$(CXX) $(SOURCES) $(CXXFLAGS) $(LDFLAGS) -o $(EXECUTABLE) $(LD_LIBRARY_PATH)/$(LIBRARY)
 	@echo $(MESSAGE)
 run:
 	@./$(EXECUTABLE) $(pcap_file)

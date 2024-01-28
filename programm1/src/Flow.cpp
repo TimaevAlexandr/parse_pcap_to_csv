@@ -1,7 +1,10 @@
-#include "FlowAnalyzer.hpp"
+// Flow.cpp
+#include "Flow.hpp"
+#include <pcap.h>
+#include <arpa/inet.h>
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
-#include <arpa/inet.h>
+#include <iostream>
 
 std::string FlowAnalyzer::getFlowKey(const struct ip* ip_header, uint16_t src_port, uint16_t dst_port) {
     std::string src_ip = inet_ntoa(ip_header->ip_src);
@@ -53,3 +56,24 @@ void FlowAnalyzer::saveResultsToFile(const std::string& filePath) {
 
     output_file.close();
 }
+
+void FlowAnalyzer::analyzePcapFile(const std::string& pcapFilePath) {
+        pcap_t* pcap_handle;
+        char errbuf[PCAP_ERRBUF_SIZE];
+
+        pcap_handle = pcap_open_offline(pcapFilePath.c_str(), errbuf);
+        if (pcap_handle == nullptr) {
+            std::cerr << "Error opening pcap file: " << errbuf << std::endl;
+            return;
+        }
+
+        pcap_loop(pcap_handle, 0, [](unsigned char* user, const struct pcap_pkthdr* pkthdr, const unsigned char* packet) {
+            reinterpret_cast<FlowAnalyzer*>(user)->handlePacket(pkthdr, packet);
+        }, reinterpret_cast<unsigned char*>(this));
+
+        pcap_close(pcap_handle);
+
+        saveResultsToFile("../output.csv");
+
+        std::cout << "Classification completed. Results saved in 'output.csv'." << std::endl;
+    }

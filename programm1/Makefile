@@ -11,7 +11,6 @@ build:
 	g++ $(SOURCES) $(CXXFLAGS) $(LDFLAGS) -o $(EXECUTABLE) $(LIBRARY)
 	@echo $(MESSAGE)
 run:
-	export 
 	@./$(EXECUTABLE) $(pcap_file)
 clean:
 	rm $(EXECUTABLE)

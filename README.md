@@ -13,3 +13,7 @@ Second part (programm2)
 
 1. python3 programm2/main.py
    will create output_from_py.csv in project root
+
+Project structure
+
+![1706450790753](image/README/1706450790753.png)flow

@@ -4,7 +4,7 @@ LDFLAGS=-ldl
 SOURCES=main.cpp
 EXECUTABLE=programm
 MESSAGE="\n Now you can run the programm with 'make run pcap_file=example.pcap ' "
-LIBRARY=libpcap.so.1.11.0-PRE-GIT
+LIBRARY=libpcap.so.1
 export LD_LIBRARY_PATH=./libs
 
 build:
